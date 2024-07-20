@@ -16,8 +16,6 @@ class Client {
         String username = reader.next();
         System.out.print("권한을 입력하세요 (admin 또는 user): ");
         String role = reader.next();
-
-
         // 2. 서버에 연결
         try (Socket socket = new Socket("localhost", 1234)) { // 서버연결
             System.out.println("서버에 연결되었습니다.");
@@ -43,6 +41,8 @@ class Client {
             System.out.println("서버의 응답: " + response);
             System.out.println(bufferedReader.readLine());
             System.out.println("Client가 종료되었습니다.");
+            objectOutputStream.close();
+            bufferedReader.close();
 
         } catch (UnknownHostException e) {
             e.printStackTrace();
